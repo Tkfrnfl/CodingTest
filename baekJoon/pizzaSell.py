@@ -14,35 +14,66 @@ if __name__=="__main__":
     for _ in range(b):
         array_b.append(int(input()))
 
+    array_a.sort()
+    array_b.sort()
+
     array_a.extend(array_a)        
     array_b.extend(array_b)
 
     ans=0
 
-    
-    for i in range(0,2)
+    size_a=[]
+    size_b=[]
 
-    for i in range(2,a):
-        for j in range(2,b):
-            tmp_a=0
-            tmp_b=0
-            for m in range(len(array_a)):
-                sum_a=0
-                tmp_a=array_a[m:m+i]
-                
-                
-                if sum(tmp_a)==num:
-                    ans+=1
-                    continue
-                if sum(tmp_a)>num:
-                    continue
-                for n in range(len(array_b)):
-                    tmp_b=array_b[n:n+j]
-     
-                    if sum(tmp_a)+sum(tmp_b)==num:
-                        #print(i,m,j,n)
-                        print(tmp_a)
-                        print(tmp_b)
-                        ans+=1
+    for i in range(a+1):
+        for m in range(a):
+            if sum(array_a[m:m+i])==num:
+                ans+=1
+            if i!=0 and i!=a:
+                size_a.append(sum(array_a[m:m+i]))    
+        if i==a:
+            size_a.append(sum(array_a[0:a]))
 
-    print(ans)                    
+    for i in range(b+1):
+        for m in range(b):
+            if sum(array_b[m:m+i])==num:
+                ans+=1
+            if i!=0 and i!=b:
+                size_b.append(sum(array_b[m:m+i]))      
+        if i==b:
+            size_b.append(sum(array_b[0:b]))
+    # print(size_a)
+    # print(size_b)
+    size_a.sort()
+    size_b.sort()
+
+
+    for n in range(len(size_b)):
+        start=0
+        end=len(size_a)
+        m=int((start+end)/2)
+
+        while start<end:
+            # print(start)
+            # print(m)
+            # print(end)
+            # print("-----")
+            if size_a[m]+size_b[n]<num:
+                start=m+1
+                m=int((start+end)/2)
+            elif size_a[m]+size_b[n]>num:
+                end=m-1
+                m=int((start+end)/2)
+            elif size_a[m]+size_b[n]==num:             
+                break
+        
+        if m<len(size_a):
+            m=size_a.index(size_a[m])
+            while (size_a[m]+size_b[n])==num:
+                ans+=1
+                m+=1
+                if m>=len(size_a):
+                    break
+       
+
+    print(ans)  
