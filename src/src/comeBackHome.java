@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class comeBackHome {
-    int r,c,k;
-    BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st;
-    ArrayList<String>[]arr;
-    ArrayList<Integer>[]visit;
-    ArrayList<Integer>[]nul;
-    int[]x={0,0,1,-1};
-    int[]y={1,-1,0,0};
-    int ans=0;
-    public void main()throws Exception {
+    static int r,c,k;
+    static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    static ArrayList<String>[]arr;
+    static ArrayList<Integer>[]visit;
+    static int[]x={0,0,1,-1};
+    static int[]y={1,-1,0,0};
+    static int ans=0;
+    public static void main()throws Exception {
 
         st=new StringTokenizer(br.readLine()," ");
 
@@ -28,34 +27,26 @@ public class comeBackHome {
             arr[i]=new ArrayList<>();
             visit[i]=new ArrayList<>();
         }
-        System.out.println(r);
-        System.out.println(arr);
+//        System.out.println(r);
+//        System.out.println(arr);
 
         for(int i=0;i<r;i++){
-//            st=new StringTokenizer(br.readLine());
-//            String tmp=st.nextToken();
-//            System.out.println(tmp);
-//            arr[i].add(tmp);
             String str=br.readLine();
-            System.out.println(str);
+           // System.out.println(str);
             for(int j=0;j<c;j++){
                 arr[i].add(String.valueOf( str.charAt(j)));
                 visit[i].add(0);
            }
-            System.out.println(arr[i]);
+           // System.out.println(arr[i]);
         }
 
        // nul=visit;
         dfs(r-1,0,1);
-        System.out.println(ans);
+        System.out.println(String.valueOf(ans));
     }
-    public void dfs(int a,int b,int length){
+    public static void dfs(int a,int b,int length){
 
-        System.out.println(a+","+b+"/"+length);
-//        System.out.println(b);
-//        System.out.println("----");
-//        System.out.println(length);
-//        System.out.println("----");
+       // System.out.println(a+","+b+"/"+length);
         visit[a].set(b,1);
         for(int i=0;i<4;i++){
             int xx=a+x[i];
@@ -89,7 +80,7 @@ public class comeBackHome {
         return;
 
     }
-    public void toZero(){
+    public static void toZero(){
         for(int i=0;i<r;i++){
             for(int j=0;j<c;j++){
                 visit[i].set(j,0);
