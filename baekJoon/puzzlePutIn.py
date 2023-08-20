@@ -23,7 +23,7 @@ def solution(game_board, table):
             y=y+yy[i]
             x=x+xx[i]    
             
-            if 0<=y<n and 0<=x<n and visited[y][x]==0and game_board[y][x]==0:
+            if 0<=y<n and 0<=x<n and visited[y][x]==0 and game_board[y][x]==0:
                 visited[y][x]=1
                 board_stack.append((y,x))
                 dfs(y,x)
