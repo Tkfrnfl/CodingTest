@@ -7,7 +7,7 @@ public class rotateArray {
 
         for(int i=0;i<nums.length;i++){
             int j=i+k;
-            if(j>=nums.length){
+            if(j>=nums.length){         //배열길이 초과시 그만큼 보정하여 temp에 저장
                 j-= nums.length;
             }
             temp[j]=nums[i];

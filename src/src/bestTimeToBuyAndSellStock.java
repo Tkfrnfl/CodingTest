@@ -6,11 +6,11 @@ public class bestTimeToBuyAndSellStock {
         int ans=0;
         int maxPrice=0;
         for(int i=0;i<prices.length;i++){
-            if(prices[prices.length-i-1]>maxPrice){
+            if(prices[prices.length-i-1]>maxPrice){     //역순 순회하며 max값보다 큰지 체크
                 maxPrice=prices[prices.length-i-1];
             }
             else {
-                ans=Math.max(ans,maxPrice-prices[prices.length-i-1]);
+                ans=Math.max(ans,maxPrice-prices[prices.length-i-1]);   //작다면 이윤 최대값 저장
             }
         }
         return ans;

@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class removeDuplicatesFromSortedArray2 {
     // 3개이상 중복된 요소를 제거하는 문제
-    // count 수를 체크하여 3개이상 될시 제거하고 아닐시 ans  값을 증가하여 요소개수 체크
+    // count 수를 체크하여 3개이상 될시 값을 수정하고 아닐시 ans  값을 증가하여 요소개수 체크하였다.
     public int removeDuplicates(int[] nums) {
         int before= nums[0];
         int count=0;
@@ -11,7 +11,7 @@ public class removeDuplicatesFromSortedArray2 {
         for(int i=1; i<nums.length;i++){
             if(before==nums[i]){
 
-                if(count>0){
+                if(count>0){            //3개 이상될시 큰값으로 수정
                     nums[i]=10001;
                 }
                 else{
