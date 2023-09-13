@@ -5,7 +5,7 @@ import java.util.List;
 public class averageOfLevelsInBinaryTree {
         //bst를 순회하며 각 depth의 평균값을 구하는 문제이다.
         //preOrder방식으로 순회하며 각 노드의 depth별 총합, 개수를 저장해두고 마지막에 리스트에 담아주어 반환하였다.
-
+        // 채점 통과를 못하였는데 input이 너무 길어서 틀린곳을 못찾아서 고치지 못했다.
        List<Double> answer =new ArrayList<>();
 
         double[] ans= new double[10000];
