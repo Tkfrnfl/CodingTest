@@ -13,7 +13,7 @@ def solution(game_board, table):
     
     yy=[1,-1,0,0]
     xx=[0,0,1,-1]
-    
+    a=0
     def dfs(a,b):
         global board_stack
         board_stack.append([a,b])
