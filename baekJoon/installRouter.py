@@ -1,49 +1,30 @@
 #-*- coding:utf-8 -*-
-import math
+def search(num, array, c, n):
+    now = array[0]
+    count = 1  # 첫 번째 공유기는 설치한 것으로 간주
+    for i in range(1, n):
+        if array[i] >= now + num:  # 거리가 num 이상이면 설치
+            count += 1
+            now = array[i]  # 현재 위치 갱신
+            if count >= c:  
+                return True
+    return False
 
 if __name__ == "__main__":
-    n,c = map(int, input().split())
-    array=[int(input()) for _ in range(n)]
+    n, c = map(int, input().split())
+    array = [int(input()) for _ in range(n)]
     array.sort()
-    total=[0]*200000
-    
-    for i in range(n):
-        total[array[i]]=1
 
-    avg=(array[n-1]-array[0])/c
-    dist=199999
-    next=array[0]
-    #print('---')   
-    for j in range(c-1):
-        tmp=next+avg
+    start = 1  
+    end = array[-1] - array[0]  
+    ans = 0
 
-        #가장 가까운 존재하는 집 찾기
-        num=-1
-        
-        #print(next)
-        while True:
-            num+=1
-            tmp_ceil=tmp+num
-            tmp_floor=tmp-num
-            ceil= math.ceil(tmp_ceil)
-            floor=math.floor(tmp_floor)
+    while start <= end:
+        mid = (start + end) // 2
+        if search(mid, array, c, n):
+            ans = mid  # 가능한 거리이므로 저장
+            start = mid + 1  # 더 큰 거리 탐색
+        else:
+            end = mid - 1  # 더 작은 거리 탐색
 
-            # #바닥 천장 둘다 존재
-            # if total[ceil]==1 and total[floor]==1:
-            #     #천장에 공유기 설치     
-            #     dist=min(dist,ceil-next)
-            #     next=ceil
-            #     break
-            #천장 존재    
-            if total[ceil]==1:
-                dist=min(dist,ceil-next)
-                next=ceil
-                break
-            #바닥 존재    
-            elif total[floor]==1:
-                dist=min(dist,floor-next)
-                next=floor
-                break
-    #print('---')        
-    print(dist)
-    
+    print(ans)
